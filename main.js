@@ -63,9 +63,6 @@ const pies = [
   },
 ];
 
-let filtered = false;
-// const selectedPies = [];
-
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = textToPrint;
@@ -148,15 +145,10 @@ const handleButtonClick = (e) => {
 
   if (buttonId === 'All') {
     // PRINT ALL THE PIES
-    filtered = false;
     pieBuilder(pies);
   } else {
-    filtered = true;
     pieBuilder(selectedPies);
   }
-  
-  console.log(filtered);
-
 }
 
 
