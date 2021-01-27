@@ -123,11 +123,47 @@ const handleButtonClick = (e) => {
 
 }
 
+
+// C in CRUD: Create new Pies
+const getFormInfo = (e) => {
+  // Stop the page from refreshing
+  e.preventDefault();
+
+  // Grabbing all the values of the inputs/form fields
+  const name = document.querySelector('#name').value;
+  const ingredients = document.querySelector('#ingredients').value;
+  const bakeTemp = document.querySelector('#bakeTemp').value;
+  const drinkPairing = document.querySelector('#drinkPairing').value;
+  const imageUrl = document.querySelector('#imageUrl').value;
+  const instructor = document.querySelector('#instructor').value;
+  const iceCream = document.querySelector('#iceCream').value;
+
+  // Short hand object notation to add values to obj
+  const obj = {
+    name,
+    bakeTemp,
+    ingredients,
+    drinkPairing,
+    imageUrl,
+    instructor,
+    iceCream,
+  }
+
+  // Pushing the new object up to the pies array
+  pies.push(obj);
+
+  // Rebuilding the DOM
+  pieBuilder(pies);
+
+  document.querySelector('form').reset();
+}
+
 const buttonEvents = () => {
   document.querySelector('#All').addEventListener('click', handleButtonClick);
   document.querySelector('#Doc').addEventListener('click', handleButtonClick);
   document.querySelector('#Aja').addEventListener('click', handleButtonClick);
   document.querySelector('#Trinity').addEventListener('click', handleButtonClick);
+  document.querySelector('form').addEventListener('submit', getFormInfo);
 }
 
 const init = () => {
